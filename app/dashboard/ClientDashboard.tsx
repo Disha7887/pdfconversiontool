@@ -80,60 +80,213 @@ export default function ClientDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4">
-        <div className="flex justify-between items-center">
-          {/* Logo */}
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
-            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 22 20">
-              <path d="M10.9922 13.3333H7.65969V6.66667H10.9922C11.592 6.66667 12.1475 6.81667 12.6584 7.11667C13.1694 7.41667 13.5749 7.82223 13.8748 8.33334C14.1747 8.84445 14.3247 9.4 14.3247 10C14.3247 10.6 14.1747 11.1556 13.8748 11.6667C13.5749 12.1778 13.1694 12.5833 12.6584 12.8833C12.1475 13.1833 11.592 13.3333 10.9922 13.3333ZM9.32594 8.33334V11.6667H10.9922C11.2921 11.6667 11.5698 11.5917 11.8253 11.4417C12.0808 11.2917 12.2835 11.0889 12.4335 10.8333C12.5835 10.5778 12.6584 10.3 12.6584 10C12.6584 9.7 12.5835 9.42222 12.4335 9.16667C12.2835 8.91111 12.0808 8.70834 11.8253 8.55834C11.5698 8.40834 11.2921 8.33334 10.9922 8.33334H9.32594ZM13.4916 3.33334H5.16031V16.6667H16.8241V6.66667H13.4916V3.33334ZM3.49406 2.5C3.49406 2.26667 3.5746 2.06945 3.73567 1.90834C3.89674 1.74722 4.09391 1.66667 4.32719 1.66667H14.3247L18.4903 5.83334V17.5C18.4903 17.7222 18.4098 17.9167 18.2487 18.0833C18.0876 18.25 17.8905 18.3333 17.6572 18.3333H4.32719C4.09391 18.3333 3.89674 18.2528 3.73567 18.0917C3.5746 17.9306 3.49406 17.7333 3.49406 17.5V2.5Z"/>
-            </svg>
+    <div className="min-h-screen bg-gray-50 flex">
+      {/* Sidebar */}
+      <div className="w-64 bg-white border-r border-gray-200 h-screen fixed left-0 top-0 overflow-y-auto">
+        <div className="p-4">
+          {/* Search Bar */}
+          <div className="relative mb-6">
+            <input
+              type="text"
+              placeholder="Search tools..."
+              className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
+              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
           </div>
 
-          {/* Right Section */}
-          <div className="flex items-center space-x-4">
-            {/* Pro Plan Badge */}
-            <div className="flex items-center px-3 py-2 border border-blue-200 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50">
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-              <span className="text-blue-700 text-sm font-medium">Pro Plan</span>
+          {/* Navigation */}
+          <nav className="space-y-2 mb-8">
+            {/* Home - Active */}
+            <button className="w-full flex items-center p-3 bg-gradient-to-r from-red-500 to-red-600 rounded-lg text-white shadow-lg">
+              <div className="w-8 h-8 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mr-3">
+                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 18">
+                  <path d="M16.7422 15.27C16.7422 15.48 16.6697 15.6575 16.5247 15.8025C16.3797 15.9475 16.2022 16.02 15.9922 16.02H3.99219C3.78219 16.02 3.60469 15.9475 3.45969 15.8025C3.31469 15.6575 3.24219 15.48 3.24219 15.27V7.39499C3.24219 7.14499 3.33719 6.94499 3.52719 6.79499L9.52719 2.12999C9.66719 2.02999 9.82219 1.97999 9.99219 1.97999C10.1622 1.97999 10.3172 2.02999 10.4572 2.12999L16.4572 6.79499C16.6472 6.94499 16.7422 7.14499 16.7422 7.39499V15.27Z"/>
+                </svg>
+              </div>
+              <div className="text-left">
+                <div className="text-sm font-medium">Home</div>
+                <div className="text-xs text-red-100">Dashboard overview</div>
+              </div>
+              <div className="ml-auto w-2 h-2 bg-white rounded-full"></div>
+            </button>
+
+            {/* Other Navigation Items */}
+            <button className="w-full flex items-center p-3 rounded-lg hover:bg-gray-50">
+              <div className="w-8 h-8 flex items-center justify-center mr-3">
+                <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 18">
+                  <path d="M3.24219 9.375H4.74219V16.125H3.24219V9.375ZM15.2422 6.375H16.7422V16.125H15.2422V6.375ZM9.24219 1.875H10.7422V16.125H9.24219V1.875Z"/>
+                </svg>
+              </div>
+              <div className="text-left">
+                <div className="text-sm font-medium text-gray-700">Total Usage</div>
+                <div className="text-xs text-gray-500">Usage statistics</div>
+              </div>
+            </button>
+
+            <button className="w-full flex items-center p-3 rounded-lg hover:bg-gray-50">
+              <div className="w-8 h-8 flex items-center justify-center mr-3">
+                <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 18">
+                  <path d="M9.99219 0.75L17.1172 4.875V13.125L9.99219 17.25L2.86719 13.125V4.875L9.99219 0.75Z"/>
+                </svg>
+              </div>
+              <div className="text-left">
+                <div className="text-sm font-medium text-gray-700">API Setup</div>
+                <div className="text-xs text-gray-500">Integration guides</div>
+              </div>
+            </button>
+
+            <button className="w-full flex items-center p-3 rounded-lg hover:bg-gray-50">
+              <div className="w-8 h-8 flex items-center justify-center mr-3">
+                <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 18">
+                  <path d="M3.24219 13.875V3.75C3.24219 3.34 3.34219 2.9625 3.54219 2.6175C3.74219 2.2725 4.01469 2 4.35969 1.8C4.70469 1.6 5.08219 1.5 5.49219 1.5H15.9922C16.2022 1.5 16.3797 1.5725 16.5247 1.7175C16.6697 1.8625 16.7422 2.04 16.7422 2.25V15.75C16.7422 15.96 16.6697 16.1375 16.5247 16.2825C16.3797 16.4275 16.2022 16.5 15.9922 16.5H5.86719C5.38719 16.5 4.94719 16.3825 4.54719 16.1475C4.14719 15.9125 3.82969 15.595 3.59469 15.195C3.35969 14.795 3.24219 14.355 3.24219 13.875Z"/>
+                </svg>
+              </div>
+              <div className="text-left">
+                <div className="text-sm font-medium text-gray-700">API Reference</div>
+                <div className="text-xs text-gray-500">Documentation</div>
+              </div>
+            </button>
+
+            <button className="w-full flex items-center p-3 rounded-lg hover:bg-gray-50">
+              <div className="w-8 h-8 flex items-center justify-center mr-3">
+                <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 18">
+                  <path d="M9.30219 1.19999L16.7272 2.26499L17.7922 9.68999L10.8922 16.575C10.7522 16.725 10.5772 16.8 10.3672 16.8C10.1572 16.8 9.98219 16.725 9.84219 16.575L2.41719 9.14999C2.26719 9.00999 2.19219 8.83499 2.19219 8.62499C2.19219 8.41499 2.26719 8.23999 2.41719 8.09999L9.30219 1.19999Z"/>
+                </svg>
+              </div>
+              <div className="text-left">
+                <div className="text-sm font-medium text-gray-700">View Plans</div>
+                <div className="text-xs text-gray-500">Pricing and upgrades</div>
+              </div>
+            </button>
+
+            <button className="w-full flex items-center p-3 rounded-lg hover:bg-gray-50">
+              <div className="w-8 h-8 flex items-center justify-center mr-3">
+                <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 18">
+                  <path d="M3.24219 2.25H16.7422C16.9522 2.25 17.1297 2.3225 17.2747 2.4675C17.4197 2.6125 17.4922 2.79 17.4922 3V15C17.4922 15.21 17.4197 15.3875 17.2747 15.5325C17.1297 15.6775 16.9522 15.75 16.7422 15.75H3.24219C3.03219 15.75 2.85469 15.6775 2.70969 15.5325C2.56469 15.3875 2.49219 15.21 2.49219 15V3C2.49219 2.79 2.56469 2.6125 2.70969 2.4675C2.85469 2.3225 3.03219 2.25 3.24219 2.25Z"/>
+                </svg>
+              </div>
+              <div className="text-left">
+                <div className="text-sm font-medium text-gray-700">API Documentation</div>
+                <div className="text-xs text-gray-500">Complete API docs</div>
+              </div>
+              <svg className="w-3 h-3 text-gray-400 ml-auto" fill="currentColor" viewBox="0 0 15 14">
+                <path d="M6.52906 3.5V4.66667H3.61344V11.0833H10.0278V8.16667H11.1941V11.6667C11.1941 11.83 11.1377 11.9681 11.025 12.0808C10.9122 12.1936 10.7742 12.25 10.6109 12.25H3.03031C2.86704 12.25 2.72903 12.1936 2.6163 12.0808C2.50356 11.9681 2.44719 11.83 2.44719 11.6667V4.08333C2.44719 3.92 2.50356 3.78194 2.6163 3.66917C2.72903 3.55639 2.86704 3.5 3.03031 3.5H6.52906ZM12.9434 1.75V6.41667H11.7772V3.745L7.22881 8.28333L6.41244 7.46667L10.9492 2.91667H8.27844V1.75H12.9434Z"/>
+              </svg>
+            </button>
+
+            <button className="w-full flex items-center p-3 rounded-lg hover:bg-gray-50">
+              <div className="w-8 h-8 flex items-center justify-center mr-3">
+                <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 18">
+                  <path d="M5.25219 2.66998C5.72219 2.49998 6.20469 2.46998 6.69969 2.57998C7.19469 2.68998 7.62719 2.92498 7.99719 3.28498C8.40719 3.70498 8.65219 4.20248 8.73219 4.77748C8.81219 5.35248 8.71719 5.88998 8.44719 6.38998L16.4722 14.43L15.4222 15.48L7.38219 7.45498C6.88219 7.72498 6.34469 7.81998 5.76969 7.73998C5.19469 7.65998 4.69719 7.41498 4.27719 7.00498C3.91719 6.63498 3.68219 6.20248 3.57219 5.70748C3.46219 5.21248 3.49219 4.72998 3.66219 4.25998L5.34219 5.93998C5.56219 6.15998 5.82719 6.26998 6.13719 6.26998C6.44719 6.26998 6.71219 6.15998 6.93219 5.93998C7.15219 5.71998 7.26219 5.45498 7.26219 5.14498C7.26219 4.83498 7.15219 4.56998 6.93219 4.34998L5.25219 2.66998Z"/>
+                </svg>
+              </div>
+              <div className="text-left">
+                <div className="text-sm font-medium text-gray-700">Live Tools</div>
+                <div className="text-xs text-gray-500">PDF conversion tools</div>
+              </div>
+            </button>
+          </nav>
+
+          {/* Quick Actions */}
+          <div className="border-t border-gray-200 pt-6 mb-8">
+            <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Quick Actions</h3>
+            <div className="space-y-2">
+              <button className="w-full flex items-center p-2 border border-gray-200 rounded-lg hover:bg-gray-50">
+                <svg className="w-4 h-4 text-gray-600 mr-3" fill="currentColor" viewBox="0 0 19 18">
+                  <path d="M2.625 14.625H16.125V16.125H2.625V14.625ZM10.125 4.74V13.125H8.625V4.74L4.065 9.3L3.015 8.235L9.375 1.875L15.735 8.235L14.685 9.3L10.125 4.74Z"/>
+                </svg>
+                <span className="text-sm text-gray-700">Upload PDF</span>
+              </button>
+              <button className="w-full flex items-center p-2 border border-gray-200 rounded-lg hover:bg-gray-50">
+                <svg className="w-4 h-4 text-gray-600 mr-3" fill="currentColor" viewBox="0 0 19 18">
+                  <path d="M9.375 1.5C10.395 1.5 11.37 1.695 12.3 2.085C13.19 2.465 13.9825 3.0025 14.6775 3.6975C15.3725 4.3925 15.91 5.185 16.29 6.075C16.68 7.005 16.875 7.98 16.875 9C16.875 10.02 16.68 10.995 16.29 11.925C15.91 12.815 15.3725 13.6075 14.6775 14.3025C13.9825 14.9975 13.19 15.535 12.3 15.915C11.37 16.305 10.395 16.5 9.375 16.5C8.355 16.5 7.38 16.305 6.45 15.915C5.56 15.535 4.7675 14.9975 4.0725 14.3025C3.3775 13.6075 2.84 12.815 2.46 11.925C2.07 10.995 1.875 10.02 1.875 9H3.375C3.375 10.09 3.65 11.1 4.2 12.03C4.73 12.93 5.445 13.645 6.345 14.175C7.275 14.725 8.285 15 9.375 15C10.465 15 11.475 14.725 12.405 14.175C13.305 13.645 14.02 12.93 14.55 12.03C15.1 11.1 15.375 10.09 15.375 9C15.375 7.91 15.1 6.9 14.55 5.97C14.02 5.07 13.305 4.355 12.405 3.825C11.475 3.275 10.465 3 9.375 3C8.365 3 7.415 3.24 6.525 3.72C5.665 4.18 4.96 4.815 4.41 5.625H6.375V7.125H1.875V2.625H3.375V4.5C4.075 3.57 4.94 2.84 5.97 2.31C7.03 1.77 8.165 1.5 9.375 1.5Z"/>
+                </svg>
+                <span className="text-sm text-gray-700">View History</span>
+              </button>
             </div>
+          </div>
 
-            {/* Manage Plan Button */}
-            <button className="flex items-center px-4 py-2 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-50">
-              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 15 14">
-                <path d="M2.60943 9.04167V2.04167H1.44318V0.875H3.19255C3.35583 0.875 3.49383 0.931389 3.60657 1.04417C3.71931 1.15694 3.77568 1.295 3.77568 1.45833V8.45833H11.0298L12.196 3.79167H4.94193V2.625H12.9424C13.1057 2.625 13.2437 2.68139 13.3564 2.79417C13.4692 2.90694 13.5255 3.045 13.5255 3.20833C13.5255 3.255 13.5178 3.30167 13.5022 3.34833L12.0444 9.18167C12.0133 9.31389 11.9453 9.42083 11.8403 9.5025C11.7353 9.58417 11.6168 9.625 11.4846 9.625H3.19255C3.02928 9.625 2.89127 9.56861 2.77853 9.45583C2.66579 9.34306 2.60943 9.205 2.60943 9.04167Z"/>
+          {/* Upgrade Plan */}
+          <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+            <div className="flex items-center mb-2">
+              <svg className="w-4 h-4 text-red-600 mr-2" fill="currentColor" viewBox="0 0 17 16">
+                <path d="M1.66563 13H14.9906V14.3334H1.66563V13ZM1.66563 3.66671L4.99688 6.00004L8.32813 1.66671L11.6594 6.00004L14.9906 3.66671V11.6667H1.66563V3.66671Z"/>
               </svg>
-              Manage Plan
-            </button>
-
-            {/* Notifications */}
-            <button className="relative p-2 border border-gray-200 rounded-lg">
-              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5h-5l5-5zM4 14h11a2 2 0 002-2V5a2 2 0 00-2-2H4a2 2 0 00-2 2v7a2 2 0 002 2z" />
-              </svg>
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-yellow-500 text-white text-xs rounded-full flex items-center justify-center">2</span>
-            </button>
-
-            {/* User Profile */}
-            <button className="flex items-center px-2 py-2 bg-gradient-to-r from-red-500 to-red-600 rounded-lg text-white">
-              <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-3">
-                <span className="text-white font-semibold text-sm">SJ</span>
-              </div>
-              <div className="text-left mr-3">
-                <div className="text-sm font-medium">Sarah Johnson</div>
-                <div className="text-xs text-red-100">sarah@company.com</div>
-              </div>
-              <svg className="w-4 h-4 text-red-200" fill="currentColor" viewBox="0 0 17 16">
-                <path d="M8.66411 8.70667L11.9554 5.41333L12.9015 6.34667L8.66411 10.5867L4.42676 6.34667L5.37283 5.41333L8.66411 8.70667Z"/>
-              </svg>
+              <h3 className="text-sm font-semibold text-red-900">Upgrade Plan</h3>
+            </div>
+            <p className="text-xs text-red-800 mb-3">Get unlimited conversions and advanced features</p>
+            <button className="w-full py-2 px-3 border border-gray-200 rounded-lg text-sm text-gray-700 bg-white hover:bg-gray-50">
+              View Plans
             </button>
           </div>
         </div>
-      </header>
+
+        {/* Sidebar Toggle Button */}
+        <button className="absolute -right-3 top-6 w-6 h-6 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-sm">
+          <svg className="w-3 h-3 text-gray-600" fill="currentColor" viewBox="0 0 14 12">
+            <path d="M6.47 5.99999L8.94 8.46999L8.24 9.17999L5.06 5.99999L8.24 2.81999L8.94 3.52999L6.47 5.99999Z"/>
+          </svg>
+        </button>
+      </div>
 
       {/* Main Content */}
-      <div className="pl-64">
+      <div className="flex-1 ml-64">
+        {/* Header */}
+        <header className="bg-white border-b border-gray-200 px-6 py-4">
+          <div className="flex justify-between items-center">
+            {/* Logo */}
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
+              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 22 20">
+                <path d="M10.9922 13.3333H7.65969V6.66667H10.9922C11.592 6.66667 12.1475 6.81667 12.6584 7.11667C13.1694 7.41667 13.5749 7.82223 13.8748 8.33334C14.1747 8.84445 14.3247 9.4 14.3247 10C14.3247 10.6 14.1747 11.1556 13.8748 11.6667C13.5749 12.1778 13.1694 12.5833 12.6584 12.8833C12.1475 13.1833 11.592 13.3333 10.9922 13.3333ZM9.32594 8.33334V11.6667H10.9922C11.2921 11.6667 11.5698 11.5917 11.8253 11.4417C12.0808 11.2917 12.2835 11.0889 12.4335 10.8333C12.5835 10.5778 12.6584 10.3 12.6584 10C12.6584 9.7 12.5835 9.42222 12.4335 9.16667C12.2835 8.91111 12.0808 8.70834 11.8253 8.55834C11.5698 8.40834 11.2921 8.33334 10.9922 8.33334H9.32594ZM13.4916 3.33334H5.16031V16.6667H16.8241V6.66667H13.4916V3.33334ZM3.49406 2.5C3.49406 2.26667 3.5746 2.06945 3.73567 1.90834C3.89674 1.74722 4.09391 1.66667 4.32719 1.66667H14.3247L18.4903 5.83334V17.5C18.4903 17.7222 18.4098 17.9167 18.2487 18.0833C18.0876 18.25 17.8905 18.3333 17.6572 18.3333H4.32719C4.09391 18.3333 3.89674 18.2528 3.73567 18.0917C3.5746 17.9306 3.49406 17.7333 3.49406 17.5V2.5Z"/>
+              </svg>
+            </div>
+
+            {/* Right Section */}
+            <div className="flex items-center space-x-4">
+              {/* Pro Plan Badge */}
+              <div className="flex items-center px-3 py-2 border border-blue-200 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50">
+                <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                <span className="text-blue-700 text-sm font-medium">Pro Plan</span>
+              </div>
+
+              {/* Manage Plan Button */}
+              <button className="flex items-center px-4 py-2 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-50">
+                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 15 14">
+                  <path d="M2.60943 9.04167V2.04167H1.44318V0.875H3.19255C3.35583 0.875 3.49383 0.931389 3.60657 1.04417C3.71931 1.15694 3.77568 1.295 3.77568 1.45833V8.45833H11.0298L12.196 3.79167H4.94193V2.625H12.9424C13.1057 2.625 13.2437 2.68139 13.3564 2.79417C13.4692 2.90694 13.5255 3.045 13.5255 3.20833C13.5255 3.255 13.5178 3.30167 13.5022 3.34833L12.0444 9.18167C12.0133 9.31389 11.9453 9.42083 11.8403 9.5025C11.7353 9.58417 11.6168 9.625 11.4846 9.625H3.19255C3.02928 9.625 2.89127 9.56861 2.77853 9.45583C2.66579 9.34306 2.60943 9.205 2.60943 9.04167Z"/>
+                </svg>
+                Manage Plan
+              </button>
+
+              {/* Notifications */}
+              <button className="relative p-2 border border-gray-200 rounded-lg">
+                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5h-5l5-5zM4 14h11a2 2 0 002-2V5a2 2 0 00-2-2H4a2 2 0 00-2 2v7a2 2 0 002 2z" />
+                </svg>
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-yellow-500 text-white text-xs rounded-full flex items-center justify-center">2</span>
+              </button>
+
+              {/* User Profile */}
+              <button className="flex items-center px-2 py-2 bg-gradient-to-r from-red-500 to-red-600 rounded-lg text-white">
+                <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-3">
+                  <span className="text-white font-semibold text-sm">SJ</span>
+                </div>
+                <div className="text-left mr-3">
+                  <div className="text-sm font-medium">Sarah Johnson</div>
+                  <div className="text-xs text-red-100">sarah@company.com</div>
+                </div>
+                <svg className="w-4 h-4 text-red-200" fill="currentColor" viewBox="0 0 17 16">
+                  <path d="M8.66411 8.70667L11.9554 5.41333L12.9015 6.34667L8.66411 10.5867L4.42676 6.34667L5.37283 5.41333L8.66411 8.70667Z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        {/* Main Content */}
         <main className="p-6">
           <div className="max-w-7xl mx-auto space-y-6">
             {/* Welcome Banner */}
